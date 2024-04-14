@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Symbol.hasInstance
+    // 一个方法，该方法决定一个构造函数是否认可一个对象是他的实例，由instanceof 操作符使用
+    // instanceof 操作符可以用来确定一个对象的实例的原型链上是否有原型
+    // function Foo() {}
+    // let f = new Foo()
+    // console.log(f instanceof Foo) // true
+    // class Bar{}
+    // let b = new Bar()
+    // console.log(b instanceof Bar) //  true
+    // instanceof 操作符会使用Symbol.hasInstance 函数来确定关系，
+    function Foo() {}
+    let f = new Foo()
+    console.log(Foo[Symbol.hasInstance](f)) // true
+    class Bar{}
+    let b = new Bar()
+    // console.log(Foo[Symbol.hasInstance](b)) //  true
+    console.log(new Bar())
+</script>
+</html>
+
+
+
+
+
+

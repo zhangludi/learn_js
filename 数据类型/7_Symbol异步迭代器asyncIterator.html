@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Symbol.asyncIterator
+    // class Foo {
+    //     async *[Symbol.asyncIterator]() {}
+    // }
+    // let f = new Foo()
+    // console.log(f[Symbol.asyncIterator]())
+    // AsyncGernerator(<suspended>)
+    class Emitter {
+        constructor(max) {
+            this.max = max
+            this.asyncIdx = 0
+        }
+        async *[Symbol.asyncIterator]() {
+            while(this.asyncIdx < this.max) {
+                yield new Promise((resolve) => resolve(this.asyncIdx++))
+            }
+        }
+    }
+    async function asyncCount() {
+        let emitter = new Emitter(5)
+        for await (const x of emitter) {
+            console.log(x)
+        }
+    }
+    asyncCount()
+</script>
+</html>

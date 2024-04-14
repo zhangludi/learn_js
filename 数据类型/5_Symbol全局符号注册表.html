@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 使用全局符号注册表
+    // 如果运行的不同部分需要共享和重要符号实例，那么可以用一个字符串作为键，在全局符号注册表中创建并重用符号
+    // Symbol.for()
+    let fooGlobalSymbol = Symbol.for('foo')
+    let otherFooGlobalSymbol = Symbol.for('foo')
+    console.log(fooGlobalSymbol === otherFooGlobalSymbol) // true
+    // Symbol.keyFor()
+    let a = Symbol.for('foo')
+    console.log(Symbol.keyFor(a)) // foo
+    let b = Symbol('bb')
+    console.log(Symbol.keyFor(b))
+</script>
+</html>

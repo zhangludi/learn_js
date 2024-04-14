@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //1. Symbol基本用法
+    // let sym = Symbol()
+    // console.log(typeof sym) // symbol
+    // let genericSymbol = Symbol()
+    // let otherGenericSymbol = Symbol()
+    // let fooSymbol = Symbol('foo')
+    // let otherFooSymbol = Symbol('foo')
+    // console.log(genericSymbol === otherGenericSymbol) // false
+    // console.log(fooSymbol === otherFooSymbol) // false
+    // 总结： 只要创建了symbol，就可以保证他不会被已有的对象覆盖，但是不能和new 一起作为构造函数使用，避免创建符号包装对象
+    // let myBoolen = new Boolean()
+    // console.log(typeof myBoolen) // object
+    // let myString = new String() 
+    // console.log(typeof myString) // object
+    // let myNumber = new Number()
+    // console.log(typeof myNumber) // object
+    // let mySymbol = new Symbol()
+    // console.log(typeof mySymbol) // Uncaught TypeError: Symbol is not a constructor
+    // 若想使用符号包装对象Object()
+    let mySymbol = Symbol()
+    let myWrappedSymbol = Object(mySymbol)
+    console.log(typeof myWrappedSymbol) // object
+</script>
+</html>
