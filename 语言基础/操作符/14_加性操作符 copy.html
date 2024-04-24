@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+  // 1 加法操作符 +
+  // 如果任意操作数是NaN, 则返回NaN
+  // Infinity + Infinity = Infinity
+  // -Infinity + -Infinity = -Infinity
+  // Infinity + -Infinity = NaN
+  // +0 + +0 =  +0
+  // -0 + +0 = +0
+  // -0 + -0 = -0
+  // 如果是字符串
+  // 1.1 如果两个都是字符串，则第二个字符串拼接到第一个字符串后面
+  // 1.2 如果只有一个操作数是字符串，则另一个将转化为字符串，再将两个字符串拼接到一起
+  // 如果任一操作数是对象/数值/布尔，则调用toString(),对于undefined null 则调用String()获取 'undefined' 'null'
+  let a = undefined
+  let b = '5'
+  let c = 5
+  console.log( a+ b) // "undefined5"
+  console.log( a + c) // NaN
+  let num1 = 5
+  let num2 = 10
+  let s = "The sum of 5 and 10 is " + num1 + num2
+  console.log(s) // "The sum of 5 and 10 is 510"
+  let s1 = "The sum of 5 and 10 is " + (num1 + num2) 
+  console.log(s1) // "The sum of 5 and 10 is 15"
+  // 2 减法操作符 -
+  
+</script>
+</html>

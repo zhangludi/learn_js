@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   // do while 后测试循环语句，即循环体中的diamanté执行后才会对退出条件进行求值，即虚幻体内的代码至少执行一次
+   let i = 0
+   do {
+    i += 2
+   } while (i<= 12)
+   console.log(i) //14
+
+   // while 先测试循环语句
+   let j = 0
+   while (j<=12) {
+    j += 2
+   }
+   console.log(j) // 14
+
+   // for 循环，先测试语句
+   let count = 10
+   for (let c = 0; c< count; c++){
+    console.log(c)  // 0 -9
+   }
+   // for-in 严格的迭代语句，用于枚举对象中的非符号键属性
+   for (const propName in window) {
+    // document.write(propName)
+   }
+   // for of 严格的迭代语句，用于遍历可迭代对象的元素
+   for (const el of [2,4,6,8]) {
+    document.write(el)
+   }
+</script>
+</html>

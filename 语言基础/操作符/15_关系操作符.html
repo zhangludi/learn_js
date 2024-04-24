@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+  // 小于< 大于 >  小于等于 <= 大于等于 >= 
+  // 1 如果操作数都是数值，则进行数值比较
+  // 2 如果都是字符串，则比较字符串对应字符编码
+  // 3 如果有任一是数值，则另一个操作符转换为数值，执行数值比较
+  // 4 如果任一擦u哦作数是对象，则调用valueOf() ,取之之后根据规则执行比较，如果没有valueOf 操作符，则调用toString(),取得结果则根据前面的规则执行比较
+  // 5 如果有一个操作数是布尔值，则转为数值在比较
+  // 注意； 1. 大写字母的编码小于 小写字母的编码
+  // let res = 'Brick' < 'arick' // true
+  // console.log(res) // true  B 编码 66 a编码 97
+  // let res1 = 'Brick'.toLowerCase() < 'arick'.toLowerCase()
+  // console.log(res1) // fasle
+  let result = '23' < '3'
+  console.log(result) // true 2编码 50 3的编码 51
+  let res = '23' < 3 // false '23' 被转为 数值 23 
+  let result1 = NaN < 3 //  false
+  let result2 = NaN >= 3 // false
+</script>
+</html>

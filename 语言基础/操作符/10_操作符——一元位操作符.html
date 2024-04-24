@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 一元操作符： 只操作一个值的操作
+    // 1. 递增递减操作符
+    // let age = 27
+    // ++age  // 28
+
+    // --age // 27
+
+    // // 但是无论使用前缀++ --，变量的值都会在语句被求值之前变化
+    // let ages = 29
+    // anotherAge = --ages + 2
+    // console.log(ages) // 28
+    // console.log(anotherAge) // 30
+
+    // let num1 = 2
+    // let num2 = 20
+    // let num3 = --num1 + num2
+    // let num4 = num1 + num2
+    // console.log(num3) // 21
+    // console.log(num4) // 21
+
+    // // 后缀-- ++ 是在语句被之后操作的
+    // let num6 = 2
+    // let num5 = num6-- + num2
+    // let num7 = num6 + num2
+    // console.log(num5) // 22
+    // console.log(num7) // 21
+    // 总结
+    //1 对于字符串，如果是有效数值形式，转数值在操作，不是有效的数值形式，变量会变成NaN
+    // 布尔值， false = 0 ,true = 1
+    // 浮点值 +1 / -1
+    // 对象 valueOf() 获取可以操作的值，如果是NaN,则调用toString()再次应用起规则
+    // let s1 = '2'
+    // let s2 = 's'
+    // let b = false
+    // let f = 1.1
+    // let o = {
+    //     valueOf() {
+    //         return -1
+    //     }
+    // }
+
+    // s1++ // 3
+    // s2++ // NaN
+    // b++ // 1
+    // f-- // -0.10000000000000009    浮点数不精确
+    // o-- // -2
+    // console.log(s1)
+    // console.log(s2)
+    // console.log(b)
+    // console.log(f)
+    // console.log(o)
+
+    // 一元加和减
+    //  一元加 一元减 对数值没有什么影响。非数值和Number() 类型转换
+
+</script>
+</html>
