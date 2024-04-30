@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   // String 构造函数继承了valueOf toLocaleString() toString()
+//    let strObj = new String('hello world')
+//    let strVal = 'hello world'
+//    console.log(strVal.length) // 11 即使字符串中包含双字节字符（而不是单字节的ASCII字符），也仍然按照单字符来计数
+//    // String 类型提供了很多方法解析和操作字符串
+
+
+//    // 1. JavaScript 字符   16位码元（code unit）
+//    let msg = 'abcde'
+//    console.log(msg.length) // 5
+//    // charAt() 返回给定索引位置的字符
+//    console.log(msg.charAt(2)) // c
+//     //  charCodeAt 可以查看置顶码元的字符编码 返回指定的码元值
+//     console.log(msg.charCodeAt(2)) // 99
+    // fromCharCode 根据给定的UTF-16 码元创建字符串中的字符，这个方法可以接受任意多个数值，并返回将所有数值对应的字符拼接起来的字符串
+    // console.log(String.fromCharCode(0x61, 0x62, 0x63, 0x64, 0x65)) // abcde
+    // console.log(String.fromCharCode(97, 98, 99, 100, 101)) // abcde
+    //在U+0000 ～ U+FFFF ,length charAt charCodeAt fromCharCode ,只要 字符串编码大小和码元大小一一对应，就可以
+    //  但是扩展到Unicode 增补字符平面 就不成立了，在Unicode 中称为 基本多语言平面（BMP), 
+    // 为了表示更多的字符，Unicode采用了一个策略，即每个字符使用另外16位去选择一个增补平面，这种每个字符使用两个16位码元的策略被称为代理对
+    // let msg = 'ab😊de'
+    // console.log(msg.length)
+    // console.log(msg.charAt(1)) // b
+    // console.log(msg.charAt(2))// <?>
+    // console.log(msg.charAt(3)) // <?>
+    // console.log(msg.charAt(4)) // d
+    // console.log(msg.charCodeAt(1)) // 98
+    // console.log(msg.charCodeAt(2)) // 55357
+    // console.log(msg.charCodeAt(3)) // 56842
+    // console.log(msg.charCodeAt(4)) // 100
+    // console.log(String.fromCharCode(0x1F60A))
+    // console.log(String.fromCharCode(97, 98, 55357, 56842, 100, 101)) // ab😊de
+    //  为了正确解析既包含 单码元字符又包含代理对字符的字符串，可以使用codePointAt 来代替 charCodeAt()
+    // codePointAt 接收16位码元的索引并返回该索引位置上的码点（code point）
+    // 码点是 Unicode 中一个字符的完整表示
+    // console.log(msg.codePointAt(1)) // 98
+    // console.log(msg.codePointAt(2)) // 128522
+    // console.log(msg.codePointAt(3)) // 56842
+    // console.log(msg.codePointAt(4)) // 100
+    // console.log(String.fromCodePoint(97, 98, 128522, 100, 101)) // ab😊de
+
+
+    // 2. normalize() 方法
+    // U++00C5 ： 上面带圆圈的大写拉丁字母 A
+    // console.log(String.fromCharCode(0x00C5)) // Å
+    // // U+212B : 长度单位 埃
+    // console.log(String.fromCharCode(0x212B)) // Å
+    // // U+004 大写拉丁字母A 
+    // // U+030A 上面加个圆圈
+    // console.log(String.fromCharCode(0x0041, 0x030A)) // Å
+    // 上面三个操作符互不相等
+
+
+
+    // 3. 字符串操作方法
+    // contact 用于将一个或者多个字符串拼接成一个字符串
+    // let strVal = 'hello '
+    // let result = strVal.concat('world')
+    // console.log(result) // hello world
+    // console.log(strVal) // hello
+    // // contact 可以接受多个参数
+    // let result1 = strVal.concat('world', '!')
+    // console.log(result1) // hello world !
+    // 提取字符串的方法 slice substr substring
+    // 接受一个或者两个参数
+    // 第一个参数 表示开始的位置
+    // 第二个参数 slice substring: 提取结束的位置
+    // substr 表示返回的子字符串长度
+    // 省略第二个表示取到末尾
+    // slice substr substring 不回修改调用他们的字符串，而是返回提取到的原始字符串值
+    // let strVal = 'hello world'
+    // console.log(strVal.slice(3)) // lo world
+    // console.log(strVal.substr(3)) // lo world
+    // console.log(strVal.substring(3)) // lo world
+    // console.log(strVal.slice(3, 7)) // lo w
+    // console.log(strVal.substr(3, 7)) // lo worl
+    // console.log(strVal.substring(3, 7)) // lo w
+    // let strVal = 'hello world'
+    // console.log(strVal.slice(-3)) // rld slice 将所有负值参数都当成字符串长度加上负参数值  11+(-3)
+    // console.log(strVal.substr(-3)) // rld substr 第一个负参数值当成字符串长度加上该值，将第二哥负参数值转换为0 11+(-3)
+    // console.log(strVal.substring(-3)) // hello world // 将所有负参数值都转换为0 
+    // console.log(strVal.slice(3, -4)) // lo w  11+(-4) （3, 7）
+    // console.log(strVal.substr(3, -4)) // ''  （3, 0）/ 包含零个字符
+    // console.log(strVal.substring(3, -4)) // hel  (3, 0) ==== (0, 3) 将较小的值作为起点，将较大的值作为终点
+
+    // 4. 字符串位置方法
+    // indexOf lastIndexOf 从字符串中搜索传入的字符串。并返回位置，如果没有找到则另返回-1
+    // indexOf 方法从字符串开头开始查找子字符串。lastIndexOf 从末尾开始查找字符串
+    // let strVal = 'hello world'
+    // console.log(strVal.indexOf('o')) // 4
+    // console,log(strVal.lastIndexOf('o')) // 7
+    // let strValue = 'lorem ipsum dolor sit amet, consectetur adipisicing elit'
+    // let positions = new Array()
+    // let pos = strValue.indexOf('e')
+    // while (pos > -1) {
+    //     positions.push(pos)
+    //     pos = strValue.indexOf('e', pos + 1)
+    // }
+    // console.log(positions) // (5) [3, 24, 32, 35, 52]
+
+    // 5. 字符串包含方法
+    // startsWith() endsWith() includes 返回一个表示是否包含的布尔值
+    // startsWith() 检查开始于索引0的匹配项
+    // endsWith() 检查开始于索引（string.length - substring.length) 匹配项
+    // includes 检查整个字符串
+    // let msg = 'foobarbaz'
+    // console.log(msg.startsWith('foo')) // true
+    // console.log(msg.startsWith('bar')) // false
+
+    // console.log(msg.endsWith('baz'))// false
+    // console.log(msg.endsWith('bar')) // true
+
+    // console.log(msg.includes('bar')) // true
+    // console.log(msg.includes('qux'))// false
+
+    // console.log(msg.startsWith('foo')) // true
+    // console.log(msg.startsWith('foo', 1)) // false
+
+    // console.log(msg.includes('bar')) // true
+    // console.log(msg.includes('bar', 4)) // false
+
+    // 6. tirm  删除前后所有空格符
+     
+    // 7. repeat  接收一个整数参数，表示要将字符串复制多次，并返回拼接所有副本后的结果
+
+    // let str = 'na '
+    // console.log(str.repeat(16) + 'batman') // na na na na na na na na na na na na na na na na batman
+
+    // 8. padStart padEnd 复制字符串，如果小于指定长度，则在相应一边填充字符直到满足长度条件
+    // 第一个参数 长度  第二个参数，可选的填充字符串
+    // let strVal = 'foo'
+    // console.log(strVal.padStart(6)) //      foo
+    // console.log(strVal.padStart(9, '.')) // ......foo
+
+    // console.log(strVal.padEnd(6)) // foo    
+    // console.log(strVal.padEnd(9, '.')) // foo......
+
+    // console.log(strVal.padStart(2)) // foo
+    // console.log(strVal.padStart(8, 'bar')) // barbafoo
+
+    
+    // 9. 字符串迭代和解构
+    // @@iterator 可以迭代字符串的每个字符
+    // let message = 'abc'
+    // let msfInterator = message[Symbol.iterator]()
+    // console.log(msfInterator.next()) // {value: 'a', done: false}
+    // console.log(msfInterator.next()) // {value: 'b', done: false}
+    // console.log(msfInterator.next()) // {value: 'c', done: false}
+    // console.log(msfInterator.next()) // {value: undefined, done: true}
+    // console.log([...message])  // (3) ['a', 'b', 'c']
+
+    // 10. 字符串大小写转换
+    // toLowerCase() toLocaleLowerCase()---特定地区转换
+    // toUpperCase toLocalUppperCase
+
+    // 11. 字符串模式匹配方法
+    //  match 可接收一个参数，可以是一个正则表达式字符串，也可以是RegExp对象
+    // search  返回第一个匹配的位置索引，没有则返回-1
+    //  replace 第一个参数 RegExp对象或者字符串 第二个参数一个字符串或者函数
+    // let text = 'cat, bat, sat, fat'
+    // let res1 = text.search(/at/) // 1
+    // let replace1 = text.replace('at', 'ond')
+    // let replace2 = text.replace(/at/g, 'ond')
+
+    // console.log(res1) // 1
+    // console.log(replace1) // cond, bat, sat, fat
+    // console.log(replace2) // cond, bond, sond, fond
+    // 第二个参数是字符串的情况下，有几个特殊的字符序列，可以用来插入正则表达式操作的值，ECMA-262
+    // $$ $
+    // $& 匹配整个模式的子字符串
+    // $'  匹配子字符串之前的字符串
+    // $` 匹配子字符串之后的字符串
+    // $n 匹配第n个捕获组的字符串，0-9
+    // $nn 01-99
+    // let text = 'cat, bat, sat, fat'
+    // let result = text.replace(/(.at)/g, "word ($1)")
+    // console.log(result) // word (cat), word (bat), word (sat), word (fat)
+
+    // function htmlEscape (text) {
+    //     return text.replace(/[<>"&]/g, function(match, pos, originalText){
+    //         switch(match) {
+    //             case '<':
+    //                 return '&lt;';
+    //             case '>':
+    //                 return '&gt;'
+    //             case '&':
+    //                 return '&amp'
+    //             case "\"":
+    //                 return "&quot"
+    //         }
+    //     })
+    // }
+    // let text = "<p class=\"greeting\">Hello World</p>"
+    // console.log(htmlEscape(text)) // &lt;p class=&quotgreeting&quot&gt;Hello World&lt;/p&gt;
+    // split
+
+
+    // 12. localCompare
+    // 如果按照字母表顺序，字符串应该排在字符串参数前头，否则返回负值 -1
+    // 如果字符串参数相等，返回0
+    // 如果按照字母表顺序，字符串一个个排在字符串参数后头 1
+    let str = 'yellow'
+    console.log(str.localeCompare('brick')) // 1
+    console.log(str.localeCompare('yilled')) // -1
+
+    console.log(str.localeCompare('yellow')) // 0
+
+    console.log(str.localeCompare('zoo')) // -1
+
+    // 13. html 方法
+</script>
+</html>

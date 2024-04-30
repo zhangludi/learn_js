@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   // 正则表达式
+   // let expression = /pattern/flags
+   // pattern(模式)可以是任何简单或者复杂的正则表达式，包含字符类，限定类，分组，向前查找和方向引用。
+   // 每个正则表达式可以带0+ flags(标记)，用于控制正则表达式的行为
+   // g 全局模式，表示查找字符串的全部内容，而不是找到第一个就结束
+   // i 不区分大小写，表示在查找匹配是忽略pattern和字符串的大小写
+   // m 多行模式 表示查找到一行文本末尾时会继续查找
+   // y 粘附模式 表示只查找从lastIndex 开始及之后的字符串
+   // u unicode模式，启用Unicode匹配
+   // s dotAll模式。表示元字符. 匹配所有字符 \n \r
+
+
+   // 字面量形式
+//    let s = "at@232323a2t1"
+//    let p1 = /at/g
+//    let r1 = p1.exec(s)
+//    console.log(r1) // ['at', index: 0, input: 'at@232323a2t1', groups: undefined]
+//    let s2 = '11110Bat@cat'
+//    let p2 = /[bc]at/gi
+//    let r2 = p2.exec(s2)
+//    console.log(r2) // ['Bat', index: 5, input: '11110Bat@Cat', groups: undefined]
+
+    // 构造函数 new RegExp(模式字符串，标记字符串(可选))
+
+    // RegExp 实例属性
+    // global 布尔值，表示是否设置了g
+    // ignoreCase 布尔值，是否设置了i
+    // unicode 布尔值 u
+    // sticky y
+    // lastIndex 整数 表示在原字符串中下一次搜索的开始位置，始终是0开始
+    // multiline 布尔值 m
+    // dotAll 布尔值 s
+    // source 正则表达式的字面量字符串（不是传给构造函数的模式字符串），没有开头和结尾的斜杠
+    // flags 正则表达式的标记字符串，始终以字面量而非传入构造函数的字符串模式形式返回，没有前后斜杠
+
+    // 实例方法 exec()  主要用于配合捕获组使用
+    // let text = "mom and dad and baby"
+    // let pattern  = /mom (and dad (and baby)?) ?/gi
+    // let matches = pattern.exec(text)
+    // console.log(matches) // (3) ['mom and dad and baby', 'and dad and baby', 'and baby', index: 0, input: 'mom and dad and baby', groups: undefined]
+    // index 表示字符串匹配模式的起始位置 input :要查找的字符串
+    // 如果调用了全局模式，每次会返回一个匹配的信息，如果没有设置，无论调用多少次都只会返回第一个
+    // let textg = "cat, bat, sat, fat"
+    // let patterng = /.at/
+    // let matchs = patterng.exec(textg)
+    // console.log(matchs.index) //0 
+    // console.log(matchs[0]) // cat
+    // console.log(patterng.lastIndex) // 0
+
+    // let matchs1 = patterng.exec(textg)
+    // console.log(matchs1.index)//0 
+    // console.log(matchs1[0])// cat
+    // console.log(patterng.lastIndex)//0 
+    // let patterng1 = /.at/g
+    // let matchs2 = patterng1.exec(textg)
+    // console.log(matchs2.index) //0 
+    // console.log(matchs2[0]) // cat
+    // console.log(patterng1.lastIndex) // 3
+    // let matchs3 = patterng1.exec(textg)
+    // console.log(matchs3.index) //5
+    // console.log(matchs3[0]) // bat
+    // console.log(patterng1.lastIndex) // 8
+    // 如果模式设置了粘附标记y， 则每次调用exec（） 只会用lastIndex 位置上寻找匹配项
+    // let pattern = /.at/y
+    // let matches = pattern.exec(text)
+    // console.log(matches.index) //0
+    // console.log(matches[0]) // cat
+    // console.log(patterng1.lastIndex) // 5
+    // let matches = pattern.exec(textg)
+    // console.log(matches.index) //0
+    // console.log(matches[0]) // cat
+    // console.log(pattern.lastIndex) // 3
+    // let text = '000-00-0000'
+    // let pattern = /\d{3}-\d{2}-\d{4}/
+    // if (pattern.test(text)) {
+    //     console.log('this is matched')
+    // }
+    // RegExp 构造函数属性
+    // 构造函数属性适用于作用域中的所有正则表达式，而且会根据最后执行的正则表达式操作而变化
+    // 还可以通过不同的方式访问他们。他们都有一个全名和简写
+    // input $_ 最后搜索的字符串（非标准特性）
+    // lastMatch $& 最后匹配的文本
+    // lastParen $+ 最后匹配的捕获组（非标准特性）
+    // leftContext $` input字符串出现在lastMatch前面的文本
+    // rightContext $' input 字符串出现在lastMatch后面的文本
+    // let text = "this has been a short summer"
+    // let pattern = /(.)hort/g
+    // if (pattern.test(text)) {
+    //     console.log(RegExp.input) // this has been a short summer
+    //     console.log(RegExp.leftContext) // this has been a 
+    //     console.log(RegExp.rightContext) // summer
+    //     console.log(RegExp.lastMatch) // short
+    //     console.log(RegExp.lastParen) // s
+    // }
+    // if (pattern.test(text)) {
+    //     console.log(RegExp.$_) // this has been a short summer
+    //     console.log(RegExp["$`"]) // this has been a 
+    //     console.log(RegExp["$'"]) // summer
+    //     console.log(RegExp["$&"]) // short
+    //     console.log(RegExp["$+"]) // s
+    // }
+
+    // RegExp 可以存储最多9个捕获组的匹配项，这些属性通过RegExp.$1~RegExp.$9 包括1-9个捕获组的匹配项
+    let text = "this has been a short summer"
+    let pattern = /(.)(.)o(.)(.)/g
+    if (pattern.test(text)) {
+        console.log(RegExp.$1) // s
+        console.log(RegExp.$2) // h
+        console.log(RegExp.$3) // r
+        console.log(RegExp.$4) // t
+    }
+</script>
+</html>

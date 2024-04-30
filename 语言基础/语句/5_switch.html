@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // switch 适用于所有数据类型，可以是字符串 对象，不需要时常量，也可以是表达式
+    switch ('hello world') {
+        case 'hello' + 'world': 
+            console.log('Greeting was found')
+            break;
+        case 'goodbye':
+            console.log('closing was found')
+            break;
+        default:
+            console.log('unexpecting message was found')
+    }
+    // switch 使用全等于 所以不会转换类型， 字符串10 不等于 数字10
+</script>
+</html>

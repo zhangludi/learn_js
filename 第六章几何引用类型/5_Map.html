@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Map
+    // 1.基本API
+    // const m = new Map()
+    // // 使用嵌套数组初始化映射
+    // const m1 = new Map([
+    //     ['key1', 'val1'],
+    //     ['key2', 'val2'],
+    //     ['key3', 'val3'],
+    // ])
+    // console.log(m1.size) // 3
+
+    // // 使用自定义迭代器初始化映射‘
+    // const m2 = new Map({
+    //         [Symbol.iterator]: function*() {
+    //         yield  ['key1', 'val1'];
+    //         yield ['key2', 'val2'];
+    //         yield ['key3', 'val3'];
+    //         }
+    //     } 
+    // )
+    // console.log(m2.size) // 3
+
+    // // 映射期待的键/值对时，无论是否提供
+    // const m3 = new Map([[]])
+    // console.log(m3.has(undefined)) // false
+    // console.log(m3.get(undefined)) // undefined
+    
+    // deleted clear 删除值 set 添加键/值对
+    // const m4 = new Map()
+    // m4.set('firstName', 'Matt')
+    //     .set('lastName', 'Tom')
+
+    // console.log(m4.has('firstName')) //true
+    // console.log(m4.get('firstName')) // Matt
+    // console.log(m4.size) // 2
+
+    // console.log(m4.delete('firstName')) // true
+    // console.log(m4.size) // 1
+    // console.log(m4.clear()) // undefined 清除这个映射实例中的所有键值对
+    // console.log(m4.has('lastName')) //false
+    // console.log(m4.get('lastName')) // undefined
+
+    // 与严格模式相等一样，在映射中用作键和值的对象及其他集合类型，在自己的内容和属性被修改时仍保持不变
+    // const m = new Map()
+    // const objkey = {},
+    //       objVal = {},
+    //       arrkey = [],
+    //       arrVal = []
+    // m.set(objkey, objVal)
+    // m.set(arrkey, arrVal)
+    // objkey.foo = 'foo'
+    // objVal.bar = 'bar'
+    // arrkey.push('foo')
+    // arrVal.push('bar')
+    // console.log(m.get(objkey)) // {bar: 'bar'}
+    // console.log(m.get(arrkey)) // ['bar']
+
+    // 2. 顺序与迭代
+    // 与Object 一个主要差异：Map实例会维护键值对的插入顺序，因此可以根据插入顺序执行迭代操作
+    // 映射实例可以提供一个迭代器Iterator,能以插入的顺序生成[key, value]形式生成数组，可以通过entries()方法或者Symbol.iterator属性
+    const m = new Map([
+        ['key1', 'val1'],
+        ['key2', 'val2'],
+        ['key3', 'val3'],
+    ])
+    
+    console.log(m.entries === m[Symbol.iterator]) // true
+    console.log([...m])
+    /*
+        (3) [Array(2), Array(2), Array(2)]
+        [
+            [
+                "key1",
+                "val1"
+            ],
+            [
+                "key2",
+                "val2"
+            ],
+            [
+                "key3",
+                "val3"
+            ]
+        ]
+    */
+
+   
+</script>
+</html>

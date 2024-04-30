@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   //  1. 数组空位 ， 可以使用一串逗号来创建空位hole，ECMA会将逗号之间相应索引位置的值当成空位
+//    const option = [,,,,,]
+//    console.log(option.length) // 5
+//    // 数组索引
+//    let colors = ['red', 'blue', 'yellow']
+//    colors[colors.length] = 'brown'
+//    colors[colors.length] = 'black'
+//    console.log(colors) //   (5) ['red', 'blue', 'yellow', 'brown', 'black']
+
+   // 2. 检测数组
+   // instanceof
+   // Array.isArray()
+
+   // 迭代器方法
+   // keys 返回数组索引的迭代器 
+   // values 返回数组元素的迭代器
+   // entries 返回索引/值对的迭代器
+//    const a = ['foo', 'bar', 'bax', 'qux']
+//    console.log(Array.from(a.keys())) // (4) [0, 1, 2, 3]
+//    console.log(Array.from(a.values())) // (4) ['foo', 'bar', 'bax', 'qux']
+//    console.log(Array.from(a.entries()))
+   /*
+   (4) [Array(2), Array(2), Array(2), Array(2)]
+   [
+    [
+        0,
+        "foo"
+    ],
+    [
+        1,
+        "bar"
+    ],
+    [
+        2,
+        "bax"
+    ],
+    [
+        3,
+        "qux"
+    ]
+]
+   */
+
+
+//    for(const [index, el] of a.entries()) {
+//     console.log(index) // 0-3
+//     console.log(el) //  foo bar bax qux
+//    }
+
+   // 3. 复制和填充方法
+   // copyWithin() 批量复制方法
+   // fill() // 填充数组方法
+   // 两个方法的函数签名类似，都需要指定既有数组实例上的一个范围，包含开始索引，不包含结束索引
+   // fill 可以向一个已有的数组中插入全部或部分相同的值， 开始索引用于指定开始填充的位置（可选）  
+   const zeroArr = [0, 0, 0, 0]
+//    // 用5填充整个数组
+//    zeroArr.fill(5) // (4) [5, 5, 5, 5]
+//    console.log(zeroArr)
+//    zeroArr.fill(0)
+
+//    // 用6填充索引值大于等于3的元素
+//    zeroArr.fill(6, 3) // (4) [0, 0, 0, 6]
+//    console.log(zeroArr)
+//    zeroArr.fill(0)
+
+//    // 用7填充大于等于1且小于3的元素
+//    zeroArr.fill(7, 1, 3) // (4) [0, 7, 7, 0]
+//    console.log(zeroArr)
+//    zeroArr.fill(0)
+
+//    // 用8 填充索引大于等于1且小于4的元素
+//    // -4 + zeroArr.length
+//    zeroArr.fill(8, -4, -1) // >=0 <3
+//    console.log(zeroArr) // (4) [8, 8, 8, 0]
+//    zeroArr.fill(0)
+
+   // fill 静默忽略超出数组边界/零长度及方向相反的索引范围
+   // 忽略过高过低，索引反向 忽略
+//    console.log(zeroArr.fill(1, -10, -9)) // [0, 0, 0, 0]
+   
+//    // 索引部分可用，填充则部分可用
+//    console.log(zeroArr.fill(4, 2, 10)) // (4) [0, 0, 4, 4]
+
+   // copyWithin 会按照制定范围浅复制数组中的部分内容，然后将他们插入到指定索引开始的位置
+   let ints,
+        reset = ()=> ints = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+
+
+    reset()
+
+    // // 从ints 中复制索引0开始的内容，插入到索引5开始的位置
+    // // 在源索引或目标索引达到数组边界时停止
+    // ints.copyWithin(5) 
+    // console.log(ints)// (10) [0, 1, 2, 3, 4, 0, 1, 2, 3, 4]
+    // reset()
+
+    // // 复制索引5开始的位置，插入到0开始的位置
+    // ints.copyWithin(0, 5)
+    // console.log(ints) //(10) [5, 6, 7, 8, 9, 5, 6, 7, 8, 9]
+    // reset()
+
+    // // 复制索引0开始到索引3结束的内容， 插入到索引4的位置
+    // ints.copyWithin(4, 0, 3)
+    // console.log(ints) //(10) [0, 1, 2, 3, 0, 1, 2, 7, 8, 9]
+    // reset()
+
+    // // javascript 引擎在插值前会完整的复制范围内的值
+    // //  因此在复制期间不存在重写的风险
+    // ints.copyWithin(2, 0, 6)
+    // console.log(ints) // (10) [0, 1, 0, 1, 2, 3, 4, 5, 8, 9]
+    // reset()
+
+
+    // 索引过低 过高，索引反向  忽略
+    
+    //  索引部分可用，复制填充可用部分
+    // ints.copyWithin(4, 7, 15)
+    // console.log(ints) // (10) [0, 1, 2, 3, 7, 8, 9, 7, 8, 9]
+
+
+    // 4.转换方法
+    // toLocalString() 
+    // toString()  返回数组中每个值的等效字符串拼接而成的一个逗号分隔的字符串
+    // valueOf() 返回的数组本身
+
+    // let colors = ['red', 'yellow', 'blue']
+    // console.log(colors.toString()) // red,yellow,blue
+    // console.log(colors.valueOf()) // (3) ['red', 'yellow', 'blue']
+
+
+    // join
+
+    // 5. 栈方法
+    // 栈是一种后进先出的结构，也就是最近添加的项先被删除，数据项的插入（推入）和删除（弹出）只在栈的一个地方发生，即栈顶
+    // push 方法接收任意数量的参数，并将他们添加到数组的末尾，返回数组的最新长度
+    // pop 用于删除数组的最后一项，同时减少数组的length,返回被删除的项
+    // let colors = new Array()
+    // let count = colors.push('red', 'green')
+    // count = colors.push('black')
+    // console.log(count) // 3
+    // let item = colors.pop()
+    // console.log(item) // black
+    // console.log(colors.length) // 2
+
+    // 6. 队列方法
+    // 队列先进先出的形式限制访问
+    // 队列在列表末尾添加数据，但从列表开头获取数据 shift
+    // unshift 
+    // let itemShift = colors.shift()
+    // console.log(itemShift) // red
+    // console.log(colors.length) // 1
+
+    // let colors = new Array()
+    // let count = colors.unshift('red', 'yellow')
+    // console.log(colors.length) // 2
+    // count = colors.unshift('black')
+    // console.log(count) // 3
+    // console.log(colors) // (3) ['black', 'red', 'yellow']
+    // let item = colors.pop()
+    // console.log(item) // yellow
+    // console.log(colors.length) // 2
+
+    // 7. 排序方法 
+    // reverse 将数组元素反向排序 
+    // sort 按照升序重新排列数组元素
+    // let valReverse = [1, 2, 3, 4, 5]
+    // valReverse.reverse()
+    // console.log(valReverse) // (5) [5, 4, 3, 2, 1]
+    // let valSort = [0, 1, 4, 10, 15]
+    // valSort.sort()
+    // console.log(valSort) // (5) [0, 1, 10, 15, 4]
+    // function compare (val1, val2){
+    //     if (val1 < val2) {
+    //         return -1
+    //     } else if (val1 > val2) {
+    //         return 1
+    //     } else {
+    //         return 0
+    //     }
+
+    // }
+    // valSort.sort(compare)
+    // console.log(valSort) // (5) [0, 1, 4, 10, 15]
+    // const testArr = [1, 4, 10, 15, 3]
+    // console.log(testArr.reverse()) // (5) [3, 15, 10, 4, 1]
+
+    // 8 操作方法
+    // concat 现有的数组全部元素基础上创建一个新数组
+    // let colors = ['red', 'yellow', 'black']
+    // let colors2 = colors.concat('yellow', ['brown', 'pink'])
+    // let colors3 = colors.concat('yellow')
+    // console.log(colors3) // (4) ['red', 'yellow', 'black', 'yellow']
+    // console.log(colors2) //(6) ['red', 'yellow', 'black', 'yellow', 'brown', 'pink']
+
+    // 打平数组参数的行为可以重写， 方法是在参数数组上指定一个特殊的符号，Symbol.isConcatSpreadable
+    // let colors = ['red', 'green', 'blue']
+    // let newColors = ['black', 'brown']
+    // let moreNewColors = {
+    //     [Symbol.isConcatSpreadable]: true,
+    //     length: 2,
+    //     0: 'pink',
+    //     1: 'cyan'
+    // }
+    // newColors[Symbol.isConcatSpreadable] = false
+    // // 强行不打平数组
+    // let colors2 = colors.concat('yellow', newColors)
+
+    // // 强制打平类数组对象
+    // let colors3 = colors.concat(moreNewColors)
+
+    // console.log(colors2) // (5) ['red', 'green', 'blue', 'yellow', Array(2)]
+    // console.log(colors3) // (5) ['red', 'green', 'blue', 'pink', 'cyan']
+    
+    // slice 创建一个包含原有数组中一个或多个元素的新数组，两个参数，返回元素的开始索引和结束索引
+    // let colors = ['red', 'green', 'blue', 'yellow', 'purple']
+    // let colors2 = colors.slice(1)
+    // let colors3 = colors.slice(1, 4)
+    // console.log(colors2) // (4) ['green', 'blue', 'yellow', 'purple']
+    // console.log(colors3) // (3) ['green', 'blue', 'yellow']
+
+    // splice 主要是在数组中间插入元素
+    // 删除 需要传2个参数 ： 需要删除的第一个元素的位置和要删除的元素数量 splice(0, 2) 删除前两个元素
+    // 插入 传入3个参数 开始位置/ 0（要删除的元素数量）和要插入的元素  splice(2, 0, 'red', 'green') 从数组第二个位置插入字符串
+    // 替换 删除元素的同时可以在指定的位置插入新元素： 开始位置 要删除的数量 要插入的任意多个元素
+    // let colors = ['red', 'green', 'blue']
+    // let removes = colors.splice(0, 1)
+    // console.log(removes) // 删除第一项 ['red']  
+    // console.log(colors) // (2) ['green', 'blue']
+
+    // removes = colors.splice(1, 0, 'yellow', 'orange')
+    // console.log(colors) // (4) ['green', 'yellow', 'orange', 'blue']
+    // console.log(removes) // [] 如果没有要删除的元素，则返回空数组
+
+    // removes = colors.splice(1, 1, 'red', 'purple') // 插入两个值，删除一个值
+    // console.log(colors) // (5) ['green', 'red', 'purple', 'orange', 'blue']
+    // console.log(removes) // ['yellow']
+
+    // 9.搜索和位置方法
+    // 按严格相等搜索
+    // indexOf lastIndexOf 返回要查找的元素在数组中的位置 没有找到则返回-1
+    // includes 返回布尔值，是否至少找到一个与指定元素匹配的项
+    // let nums = [1, 2, 3, 4, 5, 4, 3, 2, 1]
+    // console.log(nums.indexOf(4)) // 3
+    // console.log(nums.lastIndexOf(4)) // 5
+    // console.log(nums.includes(4)) // true
+
+    // let person = {name: 'test'}
+    // let people = [{name: 'test'}]
+    // let morePer = [person]
+    // console.log(people.indexOf(person)) // -1
+    // console.log(morePer.indexOf(person)) // 0
+    // console.log(people.includes(person)) // false
+    // console.log(morePer.includes(person)) // true
+
+    // 按断言函数搜索
+    // 断言函数的返回值决定相应索引的元素是否被认为匹配
+    // 三个参数 元素 索引 数组本身
+    // find() findIndex()
+    // const people = [{
+    //         name: 'Tom',
+    //         age: 18
+    //     },
+    //     {
+    //         name: 'Jame',
+    //         age: 12
+    //     }
+    // ]
+    // console.log(people.find((el, index, array)=> el.age >15)) // {name: 'Tom', age: 18}
+    // console.log(people.find((el, index, array)=> el.age <15)) // {name: 'Jame', age: 12}
+
+    // 10. 迭代方法
+    // 每个方法接收两个参数，以每一项为参数运行的函数  可选的作为函数运行上下文的作用域对象
+    // 数组元素 元素索引 数组本身
+    // every 对数组每一项都运行传入的函数，如果对每一项函数都返回true
+    // filter 对数组每一项都运行传入的函数，函数返回true的项回组成数组之后返回
+    // forEach 对数组每一项都运行传入的函数，没有返回值
+    // map 对数组每一项都运行传入的函数，返回由每个函数调用的结果构成的数组
+    // some 对数组每一项都运行传入的函数，如果有一项返回true，则这个方法返回true
+    // let nums = [1, 2, 3, 4, 5, 4, 3, 2, 1]
+    // let everyRe = nums.every((item, index, array)=> item > 2)
+    // let someRe = nums.some((item, index, array)=> item > 2)
+    // console.log(everyRe) // false
+    // console.log(someRe) // true
+
+    // let filterRe = nums.filter((item, index, array)=> item > 2)
+    // console.log(filterRe) // (5) [3, 4, 5, 4, 3]
+
+
+    // let mapRe = nums.map((item, index, array)=> item * 2)
+    // console.log(mapRe) // (9) [2, 4, 6, 8, 10, 8, 6, 4, 2]
+    
+    // 11. 归并方法
+    // reduce reduceRight
+    let nums = [1, 2, 3, 4, 5]
+    let reduceRe = nums.reduce((prev, cur, index, array) => prev + cur)
+    let reduceRightRe = nums.reduceRight((prev, cur, index, array) => prev + cur)
+    console.log(reduceRe) // 15
+    console.log(reduceRightRe) // 15
+
+</script>
+</html>

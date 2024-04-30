@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Array 
+    // 所有定型数组
+    // Map
+    // Set
+
+    // let iterableThings = [
+    //     Array.of(1, 2),
+    //     typedArr = Int16Array.of(3, 4),
+    //     new Map([[5, 6], [7, 8]]),
+    //     new Set([9, 10])
+    // ]
+    // for (const iterableThing of iterableThings) {
+    //     // console.log(iterableThing)
+    //     for (const x of iterableThing) {
+    //         console.log(x)
+    //     }
+    // }
+
+    /*
+        // (2) [1, 2]0: 11: 2length: 2[[Prototype]]: Array(0)
+        // Int16Array(2) [3, 4, buffer: ArrayBuffer(4), byteLength: 4, byteOffset: 0, length: 2, Symbol(Symbol.toStringTag): 'Int16Array']
+        // Map(2) {5 => 6, 7 => 8}[[Entries]]0: {5 => 6}1: {7 => 8}size: 2[[Prototype]]: Map
+        // Set(2) {9, 10}
+    */
+
+    /*
+        1
+        2
+        3
+        4
+        (2) [5, 6]
+        (2) [7, 8]
+        9
+        10
+    */
+//    let arr1 = [1, 2, 3]
+//    let arr2 = [...arr1]
+//    console.log(arr1) // (3) [1, 2, 3]
+//    console.log(arr2) // (3) [1, 2, 3]
+//    console.log(arr1 === arr2) // false
+
+//    // 对于期待可迭代对象的构造函数，只要传入一个可迭代对象就可以实现复制
+//    let map1 = new Map([[1, 2], [3, 4]])
+//    let map2 = new Map(map1)
+//    console.log(map1) // Map(2) {1 => 2, 3 => 4}
+//    console.log(map2) // Map(2) {1 => 2, 3 => 4}
+   
+   // 可以构建数组的部分元素
+   let arr1 = [1, 2, 3]
+   let arr2 = [0, 1, ...arr1, 4, 5]
+   console.log(arr2) // (7) [0, 1, 1, 2, 3, 4, 5]
+   // 浅复制只会复制对象引用
+   // Array.of Array.from
+   // 把数组复制到定型数组
+   let typedArr1 = Int16Array.of(...arr1)
+   let typedArr2 = Int16Array.from(arr1)
+   console.log(typedArr1) // Int16Array[1, 2, 3]
+   console.log(typedArr2)// Int16Array[1, 2, 3]
+
+   // 把数组复制到映射
+   let maps = new Map(arr1.map((x) => [x, 'val' + x]))
+   console.log(maps) // Map(3) {1 => 'val1', 2 => 'val2', 3 => 'val3'}
+
+   // 把数组复制到集合
+   let sets = new Set(typedArr2)
+   console.log(sets) // Set {1, 2, 3}
+
+    // 把集合复制回数组
+    let arr3 = [...sets]
+   console.log(arr3) // (3) [1, 2, 3]
+</script>
+</html>

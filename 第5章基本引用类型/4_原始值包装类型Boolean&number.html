@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   // \A \Z 分别匹配字符串的开始和结束
+   // 联合及交叉类型
+   // 原子组
+   // x(忽略空格) 匹配模式
+   // 条件式匹配
+   // 正则表达式注释
+   // 原始值包装类型
+   // 引用类型 Boolean Number String
+   let s1 = "some text"
+   let s2 = s1.substring(2)
+   // 三步走法： 1.创建一个String类型的实例  2.调用实例上的方法 3.销毁实例
+   let s11 = new String('some text')
+   let s22 = s11.substring(2)
+   s1 = null
+   // Boolean
+   // boolean 对应布尔值的引用类型，要创建一个Boolean 对象，使用Boolean构造函数并且传 true false
+//    let booleanObj = new Boolean(true)
+//    // boolean对象 在ECMA Script比较少
+//    let falseObj = new Boolean(false)
+//    let res = falseObj && true
+//    console.log(res) // true
+//    let falseVal = false
+//    let res1 = falseVal && true
+//    console.log(res1) // false
+   // 所有对象在布尔表达式中自动转为 true
+   // boolean 原始值和引用值(Boolean对象)区别：
+   // 1. typeof 操作符对原始值返回boolean ,但是对引用值返回 ‘object‘ 
+   // 2. Boolean对象是Boolean类型的实例，并在instanceof 操作符时返回true，则对原始值返回false
+//    console.log(typeof falseObj) // object
+//    console.log(typeof falseVal) // boolean
+//    console.log(falseObj instanceof Boolean) //  true
+//    console.log(falseVal instanceof Boolean) // false
+//    // Number
+//    let num = new Number(10)
+// //    console.log(num.toString()) // '10'
+// //    console.log(num.toString(2)) // '1010'
+// //    console.log(num.toString(8)) // '12'
+// //    console.log(num.toString(10)) // '10'
+// //    console.log(num.toString(16)) // 'a'
+//     // toFixed 返回包含指定小数点位数的数值字符串
+//     console.log(num.toFixed(2)) // 10.00
+//     // toExponential() 返回科学记数法
+//     console.log(num.toExponential(1)) // 1.0e+1
+    // toPrecision 根据情况返回最合理的输出结果。
+    // let num = 99
+    // console.log(num.toPrecision(1)) // 1e+2  100
+    // console.log(num.toPrecision(2)) // 99
+    // console.log(num.toPrecision(3)) // 99.0
+    //  原始值 和 引用数值 typeof instanceof 操作符返回不同的结果
+    // let numObj = new Number(10)
+    // let numVal = 10
+    // console.log(typeof numObj) // object
+    // console.log(typeof numVal) // number
+    // console.log(numObj instanceof Number) //  false
+    // console.log(numVal instanceof Number) //  true
+
+    // isInteger() 方法和安全整数
+    // Number.isInteger() 用于辨别一个数值是否保存为整数
+    // console.log(Number.isInteger(1)) // true
+    // console.log(Number.isInteger(1.0))// true
+    // console.log(Number.isInteger(1.01))// false
+    // // 辨别整数是否在这个范围内 Number.isSfaeInteger()
+    // // -2 ** 53 +1
+    // // 2** 53 -1
+    
+</script>
+</html>

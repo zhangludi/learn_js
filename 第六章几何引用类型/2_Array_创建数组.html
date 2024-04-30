@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Array
+    // 1. 创建数组
+    // 1.1 Array
+    // let colors = new Array()
+    // console.log(new Array(20))  // length 20
+    // // 1.2 数组字面量
+    // let colors1 = ['red', 'yellow', 'blue']
+    // 1.3 ES6 新增穿件数组的静态方法 from of
+    // from 将类数组结构转换为数组实例
+    // of 将一组参数转换为数组实例
+    // Array.from 第一个参数是一个类数组对象，即任何可迭代的结构或者有一个length属性和可索引元素的结构
+    // console.log(Array.from('Matt')) // (4) ['M', 'a', 't', 't']
+
+    // 可以使用from 将集合和映射转为一个新的数组
+    // const m = new Map().set(1, 2)
+    //                     .set(3, 4)
+                    
+    //  const n = new Set().add(1)
+    //                     .add(2)
+    //                     .add(3)
+    //                     .add(4)
+    //console.log(m) 
+    /*
+    new Map([
+        [
+            1,
+            2
+        ],
+        [
+            3,
+            4
+        ]
+    ])
+    */
+   // console.log(n)
+    /*
+    new Set([
+        1,
+        2,
+        3,
+        4
+    ])
+    */
+
+    // console.log(Array.from(m)) // (2) [Array(2), Array(2)]
+    // console.log(Array.from(n)) // (4) [1, 2, 3, 4]
+    // Array.from 浅复制
+    // const a1 = [1, 2, 3, 4]
+    // const a2 = Array.from(a1)
+    // console.log(a1 === a2) //  fasle
+
+    // 可以使用任何可迭代对象
+    // const iter = {
+    //     *[Symbol.iterator]() {
+    //         yield 1;
+    //         yield 2;
+    //         yield 3;
+    //         yield 4;
+    //     }
+    // }
+    // console.log(Array.from(iter)) // (4) [1, 2, 3, 4]
+
+
+    // arguments对象可以被轻松的转换为数组
+    // function getAgument() {
+    //     return Array.from(arguments)
+    // }
+
+    // console.log(getAgument(1, 2, 3, 4)) // Array(4) [1, 2, 3, 4]
+    // const arrayLikeObj = {
+    //     0: 1,
+    //     1: 2,
+    //     2: 3,
+    //     length: 3
+    // }
+    // console.log(Array.from(arrayLikeObj)) // [1, 2, 3, 4]
+    // Array.from 还可以接手第二个可选的映射函数参数
+    // const a1 = [1, 2, 3, 4]
+    // const a2 = Array.from(a1, x=> x**2)
+    // const a3 = Array.from(a1, function(x){return x**this.exponent}, {exponent: 2})
+    // console.log(a2) //(4) [1, 4, 9, 16]
+    // console.log(a3) // (4) [1, 4, 9, 16]
+    
+    // Array.of 可以把一组参数转为数组
+    console.log(Array.of(1, 2, 3, 4)) // (4) [1, 4, 9, 16]
+    
+ </script>
+</html>

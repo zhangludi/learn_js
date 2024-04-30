@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let now = new Date()
+    // console.log(now)  // Thu Apr 25 2024 14:56:02 GMT+0800 (中国标准时间)
+    // Date.parse()
+    // 支持的格式
+    //  月/日/年   5/23/2019
+    //  月名 日，年 May 23,2019
+    // 周几 月名 日 年 时:分:秒 时区 Tue May 23 2019 00:00:00 GMT-0700
+    // IOS 8601 扩展格式 YYYY-MM-DDTHH:mm:ss.sssZ 2019-05-23T00:00:00 只使用于ES5兼容
+    // 创建 2019年5月23日
+    // let someDate = new Date(Date.parse("May 23, 2019"))
+    // console.log(someDate) // Thu May 23 2019 00:00:00 GMT+0800 (中国标准时间)
+    // let someDate1 = new Date("May 23, 2019")
+    // console.log(someDate1) // Thu May 23 2019 00:00:00 GMT+0800 (中国标准时间)
+
+    // Date.UTC() 返回日期的毫秒表示
+    // 参数： 年 零点起月数0=1月 2=1月。。 日1-31 时0-23 分 秒 毫秒 年月是必须的
+    let y2k = new Date(Date.UTC(2000,0))
+    console.log(y2k) // Sat Jan 01 2000 08:00:00 GMT+0800 (中国标准时间) "2000-01-01T00:00:00.000Z"
+    let y2k1 = new Date(Date.UTC(2000,4, 5, 17, 55, 55))
+    console.log(y2k1) // 2000-05-05 17:55:55 // "2000-05-05T17:55:55.000Z"
+
+    //
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // with 用于将代码域设置为特定的对象,不推荐使用
+    let qs = location.search.substring(1)
+    let hostNamw = location.hostname
+    let url = location.href
+
+    //都用到了location
+    with(location) {
+        let qs = search.substring(1)
+        let hostNamw = hostname
+        let url = href
+    }
+</script>
+</html>
